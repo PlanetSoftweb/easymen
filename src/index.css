@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Optimize mobile tap targets */
+  @media (max-width: 768px) {
+    button, a {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Apply Animations */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Custom Focus Styles */
+:focus-visible {
+  @apply outline-none ring-2 ring-card-golden ring-opacity-50;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-app-darker;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-app-dark rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-600;
+}
+
+/* Base Styles */
+html {
+  @apply antialiased;
+}
+
+body {
+  @apply bg-gray-100 text-gray-900;
+}
+
+button {
+  @apply bg-black text-white hover:bg-gray-800 transition-all duration-200;
+}
+
+.banking-card {
+  @apply bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-2xl shadow-2xl transform transition-all duration-300 hover:scale-105;
+  background-image: linear-gradient(45deg, #1a1a1a, #2d2d2d);
+}
+
+.banking-card .card-chip {
+  @apply w-12 h-8 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-md mb-4;
+}
+
+.banking-card .card-number {
+  @apply text-2xl font-mono tracking-wider mb-4;
+}
+
+.banking-card .card-details {
+  @apply flex justify-between items-center text-sm opacity-80;
+}
+
+.banking-card .card-logo {
+  @apply absolute top-4 right-4 text-white text-xl font-bold italic;
+}
+
+nav a {
+  @apply text-gray-300 hover:bg-gray-700 hover:text-white;
+}
+
+nav a.active {
+  @apply bg-gray-900 text-white;
+}
+
+/* Modern Banking Styles */
+.banking-card {
+  @apply relative overflow-hidden rounded-2xl p-6 shadow-xl transition-all duration-300 hover:scale-[1.02] backdrop-blur-lg bg-opacity-20;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.banking-card {
+  background: linear-gradient(135deg, #1a1f36 0%, #121527 100%);
+  min-height: 220px;
+  position: relative;
+}
+
+.banking-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(125deg, rgba(192,192,192,0.1) 0%, rgba(169,169,169,0.1) 100%);
+  pointer-events: none;
+}
+
+.banking-card.dark-gradient .card-chip {
+  @apply w-12 h-8 bg-gradient-to-br from-gray-300/20 to-gray-400/20 rounded-md;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.banking-card .card-chip {
+  @apply w-12 h-8 bg-gradient-to-br from-gray-300 to-gray-400 rounded-md mb-6;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.banking-card.dark {
+  @apply bg-card-gradient text-white;
+}
+
+.banking-card.blue {
+  @apply bg-blue-gradient text-white;
+}
+
+/* Card Pattern */
+.card-pattern::before {
+  content: '';
+  @apply absolute inset-0 opacity-10;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.1) 25px,
+    transparent 25px,
+    transparent 50px,
+    rgba(255,255,255,0.1) 50px,
+    rgba(255,255,255,0.1) 75px,
+    transparent 75px,
+    transparent 100px
+  );
+}
+
+/* Custom Form Styles */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Dark Theme Form Elements */
+.dark-input {
+  @apply bg-app-darker border-gray-700 text-white placeholder-gray-500 focus:border-card-golden focus:ring-card-golden;
+}
+
+.dark-select {
+  @apply bg-app-darker border-gray-700 text-white focus:border-card-golden focus:ring-card-golden;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+  .banking-card {
+    @apply p-4;
+  }
+  
+  /* Mobile Navigation Styles */
+  .mobile-nav-link {
+    @apply relative flex-1 flex flex-col items-center justify-center py-4;
+  }
+  
+  .mobile-nav-link.active::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-white rounded-t-full;
+  }
+}
